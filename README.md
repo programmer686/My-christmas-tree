@@ -4,6 +4,7 @@ To run the program run ./my_christmas_tree followed by how many layers you want 
   Ex.
   ./my_christmas_tree 5
 ```                   *
+                   *
                   ***
                  *****
                 *******
