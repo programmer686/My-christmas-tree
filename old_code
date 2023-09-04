@@ -1,0 +1,119 @@
+#include <stdio.h>
+#include <string.h>
+
+
+int get_start_point(int amount_of_layers, int startingPoint) {
+ int dif = 3;
+ 
+
+ int remainder = amount_of_layers % 2;
+ int divi_result = amount_of_layers / 2;
+
+ int start_end_dif = remainder + divi_result;
+
+ while (start_end_dif > 0) {
+  if (start_end_dif != 1) {
+     startingPoint += dif * 2;
+     dif += 1;
+    } else {
+        startingPoint += dif;
+        dif += 1;
+    }
+    start_end_dif--;
+  }
+
+return startingPoint;
+} 
+
+int print_spaces(int amount_of) {
+    int i = amount_of;
+    
+    while (i > 0 ) {
+        printf(" ");
+        i--;
+    }
+
+    return 0;
+}
+
+int print_asterisk (int base) {  
+    while (base > 0) {
+        printf("*");
+        base--;
+    }
+
+    printf("\n");
+
+    return 0;
+}
+
+int print_triangle(int amount_of_spaces, int amount_of_asterisks, int amount_of_layers) {
+    while (amount_of_layers > 0 ) {
+        print_spaces(amount_of_spaces);
+        print_asterisk(amount_of_asterisks);
+
+        amount_of_asterisks += 2;
+        amount_of_spaces -= 1;
+
+        amount_of_layers--;
+    }
+   // printf("%d", amount_of_asterisks);
+    return amount_of_asterisks;
+}
+
+int get_amount_of_asterisks(int amount_of_asterisks, int amount_of_layers) {
+    int store_val = 0;
+    while (amount_of_layers > 0 ) {
+        amount_of_asterisks += 2;
+        if (amount_of_layers <= 1) {
+            store_val += amount_of_asterisks - 4;
+        }
+        amount_of_layers--;
+    }
+   // printf("%d", amount_of_asterisks);
+    return store_val;
+}
+
+
+int print_tree(int start, int given) {
+
+    int amount_of_spaces = start;
+    int amount_of_asterisks = 1;
+    int amount_of_layers = 4;
+    int i = given;
+    int keep_track_layer = 2;
+
+    while (i > 0) {
+          if (i < (given - 2)) {
+         
+            keep_track_layer += 10;
+            amount_of_asterisks = get_amount_of_asterisks(amount_of_asterisks, amount_of_layers);
+            amount_of_asterisks -= keep_track_layer; 
+            keep_track_layer -= 10;
+            
+        } 
+       
+        print_triangle(amount_of_spaces, amount_of_asterisks, amount_of_layers);
+        amount_of_layers += 1;
+        amount_of_asterisks = get_amount_of_asterisks(amount_of_asterisks, amount_of_layers) - keep_track_layer; 
+        
+
+        
+        amount_of_spaces = start - 2;
+        start = start - 3;
+        i--;
+    }
+
+
+
+}
+
+int main() {
+    int startingPoint = 0;
+    int amount_of_layers = 1;
+    
+    startingPoint = get_start_point(amount_of_layers, startingPoint);
+
+    print_tree(startingPoint, amount_of_layers);
+    
+}

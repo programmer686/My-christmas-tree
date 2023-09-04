@@ -1,0 +1,111 @@
+int print_tree(int size_of_tree) {
+  int amount_of_asterisks = 1;
+  int amount_of_spaces = get_amount_of_spaces(size_of_tree);
+  int dif = 4;
+  int amount_of_layer_asterisks = 4;
+  int i = size_of_tree;
+
+  while (i > 0) {
+    int k = amount_of_layer_asterisks;
+
+    while (k > 0) {
+      print_characters(amount_of_spaces, ' ');
+      print_characters(amount_of_asterisks, '*');
+      amount_of_asterisks += 2;
+      amount_of_spaces -= 1;
+      k--;
+    }
+    if (i % 3 == 0) {
+      dif += 2;
+      amount_of_spaces += 1;
+    }
+
+    i--;
+    amount_of_layer_asterisks++;
+    amount_of_asterisks -= dif;
+    amount_of_spaces += 2;
+  }
+
+  int print_trunk(int amount_of_asterisks, int size_of_tree);
+
+  return 0;
+}
+
+
+                   * 19 spaces
+                  ***
+                 *****
+                *******
+                 ***** 17 spaces
+                *******
+               *********
+              ***********
+             *************
+              *********** 14 spaces
+             *************
+            ***************
+           *****************
+          *******************
+         *********************
+           ***************** 11 spaces
+          *******************
+         *********************
+        ***********************
+       *************************
+      ***************************
+     *****************************
+       ************************* 7 spaces
+      ***************************
+     *****************************
+    *******************************
+   *********************************
+  ***********************************
+ *************************************
+***************************************
+                 |||||
+                 |||||
+                 |||||
+                 |||||
+                 |||||
+
+
+
+Starting Sections
+
+first = 1               
+        3
+        5
+        7
+
+second = 5
+         7
+         9
+         11
+         13
+
+third = 11
+        13
+        15
+        17
+        19
+        21
+
+fourth = 17
+         19
+         21
+         23
+         25
+         27
+         29
+
+fith = 25
+       27
+       29
+       31
+       33
+       35
+       37
+       38
+
+
+
